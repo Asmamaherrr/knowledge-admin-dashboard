@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة الإدارة - منصة تبادل المعرفة</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href=".\vendors\fontawesome\css\all.min.css">
+  <link href="/css/styles.css" rel="stylesheet" />
+  <style>
+    /* Scoped styles for admin page */
+    .admin-header {
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-header h1 {
+      color: black;
+      margin: 0;
+    }
+    .lang-dropdown {
+      margin-left: 30px;
+    }
+    .stats-section h2 {
+      margin-bottom: 20px;
+    }
+    .stats-cards .card {
+      cursor: default;
+      transition: transform 0.2s ease;
+    }
+    .stats-cards .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+    .admin-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .admin-buttons a.btn {
+      min-width: 180px;
+      font-size: 1.1rem;
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="contentt container">
+    <header class="admin-header">
+      <h1>لوحة الإدارة</h1>
+      <div class="dropdown lang-dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="langDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+          العربية
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="langDropdownBtn">
+          <li><a class="dropdown-item" href="#" data-lang="ar">العربية</a></li>
+          <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="stats-section mb-5">
+      <h2>لوحة الإحصائيات</h2>
+      <div class="row text-center stats-cards">
+        <div class="col-md-3 mb-3">
+          <div class="card bg-primary text-white">
+            <div class="card-body">
+              <h3 id="totalUsers">1500</h3>
+              <p>إجمالي المستخدمين</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card bg-success text-white">
+            <div class="card-body">
+              <h3 id="totalQuestions">3200</h3>
+              <p>إجمالي الأسئلة</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card bg-warning text-dark">
+            <div class="card-body">
+              <h3 id="totalAnswers">8500</h3>
+              <p>إجمالي الإجابات</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card bg-info text-white">
+            <div class="card-body">
+              <h3 id="totalGroups">120</h3>
+              <p>إجمالي المجموعات</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <canvas id="statsChart" width="400" height="150"></canvas>
+    </section>
+
+    <section class="admin-buttons">
+      <a href="reported_posts.html" class="btn btn-success btn-sm">المنشورات المبلغ عنها</a>
+      <a href="user_management.html" class="btn btn-success btn-sm">ادارة المستخدمين</a>
+      <a href="create_group.html" class="btn btn-success btn-sm">المجموعات</a>
+      <a href="tags.html" class="btn btn-success btn-sm">الوسوم</a>
+      <a href="que.html" class="btn btn-success btn-sm">الاسئلة</a>
+      <a href="#" style="color: aliceblue;" class="btn btn-success btn-sm">انشاء تقارير</a>
+    </section>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const ctx = document.getElementById('statsChart').getContext('2d');
+      const statsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['المستخدمين', 'الأسئلة', 'الإجابات', 'المجموعات'],
+          datasets: [{
+            label: 'الإحصائيات',
+            data: [
+              parseInt(document.getElementById('totalUsers').textContent),
+              parseInt(document.getElementById('totalQuestions').textContent),
+              parseInt(document.getElementById('totalAnswers').textContent),
+              parseInt(document.getElementById('totalGroups').textContent)
+            ],
+            backgroundColor: [
+              'rgba(13, 110, 253, 0.7)', 
+              'rgba(25, 135, 84, 0.7)',  
+              'rgba(255, 193, 7, 0.7)',  
+              'rgba(13, 202, 240, 0.7)'  
+            ],
+            borderColor: [
+              'rgba(13, 110, 253, 1)',
+              'rgba(25, 135, 84, 1)',
+              'rgba(255, 193, 7, 1)',
+              'rgba(13, 202, 240, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1000
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

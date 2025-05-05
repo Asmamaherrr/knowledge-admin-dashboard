@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الملف الشخصي - منصة تبادل المعرفة</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href=".\vendors\fontawesome\css\all.min.css">
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 style="color: black;">الملف الشخصي للمستخدم</h1>
+      <div class="d-flex align-items-center">
+        <div id="languageToggle" class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="langDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            العربية
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="langDropdownBtn">
+            <li><a class="dropdown-item" href="#" data-lang="ar">العربية</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-3 text-center">
+          <img src="profile-icon-symbol-design-illustration-vector.jpg" alt="User Avatar" width="200" class="rounded-circle mx-auto mt-3" />
+          <div class="card-body">
+            <h5 class="card-title" id="username">جون دو</h5>
+            <p class="card-text" id="userBio">طالب ذكاء اصطناعي وعلوم الحاسوب مهتم بالتعلم الآلي وعلوم البيانات.</p>
+            <p class="card-text"><small class="text-muted">النقاط: <span id="userReputation">1200</span></small></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="questions-tab" data-bs-toggle="tab" data-bs-target="#questions" type="button" role="tab" aria-controls="questions" aria-selected="true">الاسئلة</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="answers-tab" data-bs-toggle="tab" data-bs-target="#answers" type="button" role="tab" aria-controls="answers" aria-selected="false">الاجابات</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="badges-tab" data-bs-toggle="tab" data-bs-target="#badges" type="button" role="tab" aria-controls="badges" aria-selected="false">الشارات</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">المنشورات المحفوظة</button>
+          </li>
+        </ul>
+        <div class="tab-content mt-3" id="profileTabsContent">
+          <div class="tab-pane fade show active" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+            <ul class="list-group" id="myQuestionsList">
+              <li class="list-group-item">كيف يمكنني بناء شبكة عصبية من الصفر؟</li>
+              <li class="list-group-item">ما هي أفضل الموارد لتعلم الخوارزميات؟</li>
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tab">
+            <ul class="list-group" id="myAnswersList">
+              <li class="list-group-item">إجابة على: كيف يمكنني بناء شبكة عصبية من الصفر؟</li>
+              <li class="list-group-item">إجابة على: ما هي أفضل الموارد لتعلم الخوارزميات؟</li>
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="badges" role="tabpanel" aria-labelledby="badges-tab">
+            <ul class="list-group" id="badgesList">
+              <li class="list-group-item">أفضل مساهم</li>
+              <li class="list-group-item">خبير الذكاء الاصطناعي</li>
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+            <ul class="list-group" id="savedPostsList">
+              <li class="list-group-item">فهم الشبكات العصبية الالتفافية</li>
+              <li class="list-group-item">شرح خوارزميات الفرز</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
