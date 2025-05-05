@@ -1,0 +1,11 @@
+#languageToggle .dropdown-toggle {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+#languageToggle .dropdown-toggle:hover,
+#languageToggle .dropdown-toggle:focus {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
